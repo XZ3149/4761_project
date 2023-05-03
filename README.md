@@ -1,7 +1,7 @@
 # 4761_project
 
 
-- This is the GitHub repo for 4761 final project by Xingpei Zhang 
+- This is the GitHub repo for 4761 final project by
 
 
 
