@@ -4,20 +4,21 @@
 This is the GitHub repo for 4761 final project by
 
 Dependencies:
-python 3.9
-anaconda
-jupyternotebook
-samtools 
-bedtools 
-wget 
-matplotlib 
-numpy
-seaborn 
-scipy
-pandas
-numpy
-sklearn
-
+```
+- python 3.9
+- anaconda
+- jupyternotebook
+- samtools 
+- bedtools 
+- wget 
+- matplotlib 
+- numpy
+- seaborn 
+- scipy
+- pandas
+- numpy
+- sklearn
+```
 
 
 
@@ -63,7 +64,6 @@ sh all_bed_to_bin.sh
 ```
 
 
-
 - Step 4. Data aggregation
 
 We use bash script move_ctcf.sh, move_DNase.sh, move_histone.sh, move_datarna_total.sh to moved respected seqencing data together and use combined.sh to merge them together as a single file. The script require the input of cell_lines_header file
@@ -79,15 +79,75 @@ We will obtain data in format like this:
 
 ![My Image](Images/Combined_file.png)
 
-
+At this step, we also generate figure 1 & 2 using pandas Dataframe and matplotlib by selecting row with a sum of zero, and count empty bin for each columns.
 
 - Step 5. Bam files process 
 
-After trying binirized data, we decide to process bam to bin. 
-
-
+After trying binirized data, we decide to process bam to bin.We use bash script all_bamtobed.sh with a dependencies in 1000.genome.sorted.filter.bed and bamtobed.sh.  
 
 
 ```
-test
+cd woring_directory/
+nohup sh all_bamtobed.sh & #this step will take hours, we need to run it in background without interuption.
 ```
+
+- Step 6. bam_based bin files to merged files
+repeat step 4  
+
+- Step 7. Input matrix and output matrix generation
+
+We use a python script data_formatting.py to perfrom log normalization, random bin selections, and data formatting. 
+
+
+```
+# run the script and set working direcotry first
+python data_formatting.py
+
+ctcf_df, h3k9me3_df, dnase_df, rna_df = read_df("ctcf.bin","h3k9me3.bin","dnase.bin","rna.bin")
+    
+sample_split(ctcf_df, h3k9me3_df, dnase_df, rna_df)
+    
+
+ctcf_df = pd.read_csv('outsample_ctcf.bin')
+h3k9me3_df = pd.read_csv("outsample_h3k9me3.bin")
+dnase_df = pd.read_csv("outsample_DNase.bin")
+rna_df = pd.read_csv("outsample_rna.bin")
+ 
+out_sample_process(ctcf_df, h3k9me3_df, dnase_df, rna_df, 10000, interval = 500000) 
+    
+ctcf_df = pd.read_csv('insample_ctcf.bin')
+h3k9me3_df = pd.read_csv("insample_h3k9me3.bin")
+dnase_df = pd.read_csv("insample_DNase.bin")
+rna_df = pd.read_csv("insample_rna.bin")
+random_sample_generation(ctcf_df, h3k9me3_df, dnase_df, rna_df, samples_size, interval = 500000)
+
+```
+
+Perform this process for both binarized data and unbinarized data.We will have input files in format that columns name are the bins infromation and row is the bin read within 500kb form the DNase bin. 
+
+
+
+![My Image](Images/CTCF_Sample.png)
+
+
+
+
+For output data, we will have files in format that columns name are the bins infromation and row is the DNase bin count for this bin. 
+
+![My Image](Images/DNase_Sample.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
