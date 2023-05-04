@@ -131,10 +131,15 @@ Perform this process for both binarized data and unbinarized data.We will have i
 
 
 
-
 For output data, we will have files in format that columns name are the bins infromation and row is the DNase bin count for this bin. 
 
 ![My Image](Images/DNase_Sample.png)
+
+- Step 9 Model training
+
+We train model on these data and assay thier performance. All the infromation about this step is include in Model_10000.ipynb. 
+
+
 
 
 
