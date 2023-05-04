@@ -3,6 +3,23 @@
 
 This is the GitHub repo for 4761 final project by
 
+Dependencies:
+python 3.9
+anaconda
+jupyternotebook
+samtools 
+bedtools 
+wget 
+matplotlib 
+numpy
+seaborn 
+scipy
+pandas
+numpy
+sklearn
+
+
+
 
 - Step 1. data downloading from ENCODE for cell lines described in cell_lines.txt. We download data from https://www.encodeproject.org/matrix/?type=Experiment&control_type!=*&status=released&perturbed=false. We create dictionary for each cell line. Then, we download data through bash script using wget in Linux server. The download.sh is an example script that we use to download cell line A549 bam files. We run the script as 
 
@@ -64,7 +81,9 @@ We will obtain data in format like this:
 
 
 
+- Step 5. Bam files process 
 
+After trying binirized data, we decide to process bam to bin. 
 
 
 
