@@ -108,13 +108,6 @@ ctcf_df, h3k9me3_df, dnase_df, rna_df = read_df("ctcf.bin","h3k9me3.bin","dnase.
     
 sample_split(ctcf_df, h3k9me3_df, dnase_df, rna_df)
     
-
-ctcf_df = pd.read_csv('outsample_ctcf.bin')
-h3k9me3_df = pd.read_csv("outsample_h3k9me3.bin")
-dnase_df = pd.read_csv("outsample_DNase.bin")
-rna_df = pd.read_csv("outsample_rna.bin")
- 
-out_sample_process(ctcf_df, h3k9me3_df, dnase_df, rna_df, 10000, interval = 500000) 
     
 ctcf_df = pd.read_csv('insample_ctcf.bin')
 h3k9me3_df = pd.read_csv("insample_h3k9me3.bin")
