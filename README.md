@@ -1,7 +1,8 @@
 # 4761_project
 
 
-This is the GitHub repo for 4761 final project by
+This is the GitHub repo for 4761 final project by Haochen Sun, Yuchen Xu, and Xingpei Zhang
+
 
 Dependencies:
 ```
