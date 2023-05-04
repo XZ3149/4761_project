@@ -42,7 +42,7 @@ bedtools makewindows -g genome.chr.ln -w 1000 > 1000.genome.bed
 ```
 
 
-- Step 3. Data binirization
+- Step 3. Data binarization
 
 Bed and BigWig files were downloaded from ENCODE as described earlier. Firstly, we use bash script to transfrom all BigWig format into bed format using bigwig_to_bed.sh. 
  
